@@ -5,7 +5,7 @@
 struct rota {
     Cidade* comeco;
     Cidade* destino;
-    char hor[5];
+    char h[5];
 };
 
 Rota* criarRota(Cidade* comeco, Cidade* destino, char* h) {
@@ -16,4 +16,12 @@ Rota* criarRota(Cidade* comeco, Cidade* destino, char* h) {
         return rota;
     }
     return NULL;
+}
+
+void preencheRota(Rota* rota, Cidade** preenchimento, int tam) {
+    atribuiProx(rota->comeco, preenchimento[0]);
+    for (int i = 0; i < tam-1; i++) {
+        atribuiProx(preenchimento[1], preenchimento[i + 1]);
+    }
+    atribuiProx(preenchimento[tam-1], rota->destino);
 }

@@ -20,3 +20,21 @@ Cidade* criaCidade(char* nome, char* descricao) {
     return NULL;
 }
 
+Cidade* obtemProx(Cidade* cidade) {
+    return cidade->prox;
+}
+
+Cidade* obtemAnt(Cidade* cidade) {
+    return cidade->ant;
+}
+
+Cidade* atribuiProx(Cidade* cidade, Cidade* prox) {
+    cidade->prox = prox;
+    prox->ant = cidade;
+}
+
+Cidade* atribuiAnt(Cidade* cidade, Cidade* ant){
+    cidade->ant = ant;
+    ant->prox = cidade;
+}
+
