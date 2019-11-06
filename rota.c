@@ -13,6 +13,7 @@ Rota* criarRota(Cidade* comeco, Cidade* destino, char* h) {
     if (rota = (Rota*) malloc(sizeof(Rota))){
         rota->comeco = comeco;
         rota->destino = destino;
+        atribuiProx(comeco, destino);
         return rota;
     }
     return NULL;

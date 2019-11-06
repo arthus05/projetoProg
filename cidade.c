@@ -9,7 +9,7 @@ struct cidade {
 };
 
 Cidade* criaCidade(char* nome, char* descricao) {
-    Cidade* cidade ;
+    Cidade* cidade;
     if (cidade = (Cidade*) malloc(sizeof(Cidade))) {
         cidade->nome = nome;
         cidade->descricao = descricao;
@@ -18,6 +18,14 @@ Cidade* criaCidade(char* nome, char* descricao) {
         return cidade;
     }
     return NULL;
+}
+
+int tamCidade() {
+    return sizeof(Cidade);
+}
+
+Cidade copCidade(Cidade* cidade) {
+    return *cidade;
 }
 
 Cidade* obtemProx(Cidade* cidade) {

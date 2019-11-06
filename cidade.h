@@ -5,6 +5,12 @@ typedef struct cidade Cidade;
 /* Cria uma cidade */
 Cidade* criaCidade(char* nome, char* descricao);
 
+/* Retorna o tamanho da cidade */
+int tamCidade();
+
+/* Obtém cópia de uma cidade */
+Cidade copCidade(Cidade* cidade);
+
 /* Retorna o próximo de uma cidade */
 Cidade* obtemProx(Cidade* cidade);
 
