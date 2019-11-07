@@ -26,3 +26,7 @@ void preencheRota(Rota* rota, Cidade** preenchimento, int tam) {
     }
     atribuiProx(preenchimento[tam-1], rota->destino);
 }
+
+Cidade* obtemComeco(Rota* rota) {
+    return rota->comeco;
+}

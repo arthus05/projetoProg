@@ -9,3 +9,6 @@ Rota* criarRota(Cidade* comeco, Cidade* destino, char* h);
 /* Preenche a rota, recebendo, a rota, um vetor cujos elementos são as cidades da rota, em ordem, e o
 tamanho do vetor */
 void preencheRota(Rota* rota, Cidade** preenchimento, int tam);
+
+/* Retorna o ponteiro para a cidade inicial da rota */
+Cidade* obtemComeco(Rota* rota);

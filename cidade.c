@@ -46,3 +46,11 @@ Cidade* atribuiAnt(Cidade* cidade, Cidade* ant){
     ant->prox = cidade;
 }
 
+char* obtemNome(Cidade* cidade) {
+    return cidade->nome;
+}
+
+char* obtemDesc(Cidade* cidade) {
+    return cidade->descricao;
+}
+

@@ -1,11 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <curses.h>
+#include <string.h>
+//#include <curses.h>
 #include "cidade.h"
 #include "rota.h"
 
 void nav(Rota* rota) {
-    if (getch() == '\033') {// if the first value is esc
+    char* ent;
+    Cidade* aux = obtemComeco(rota);
+    printf("%s\n\n%s", obtemNome(aux), obtemDesc(aux));
+    while (1) {
+        printf("\n\nDigite 'A' para navegar à esquerda e 'D', à direita.\n");
+        scanf("%c", ent);
+        if (ent == "D") {
+            aux = obtemProx(aux);
+            printf("%s\n\n%s", obtemNome(aux), obtemDesc(aux));
+        } else {
+            break;
+        }
+    }
+    /*if (getch() == '\033') {// if the first value is esc
     getch();// skip the [
     if (getch()) {
         case 'C':
@@ -15,7 +29,7 @@ void nav(Rota* rota) {
             // código para a seta esquerda
             break;
         }   
-    }
+    }*/
 }
 
 int main() {
@@ -35,9 +49,9 @@ int main() {
     /* Cada rota ocorrerá às 08:00, 13:00 e 20:00, sendo representada por R<cidade>_<horario> */
 
     /* Rotas Caucáia :: 1 */
-    Rota* Rcaucaia_8 = criarRota(copCidade(fortaleza), copCidade(caucaia), "08:00");
-    Rota* Rcaucaia_13 = criarRota(copCidade(fortaleza), copCidade(caucaia), "13:00");
-    Rota* Rcaucaia_20 = criarRota(copCidade(fortaleza), copCidade(caucaia), "20:00");
+    Rota* Rcaucaia_8 = criarRota(fortaleza, caucaia, "08:00");
+    Rota* Rcaucaia_13 = criarRota(fortaleza, caucaia, "13:00");
+    Rota* Rcaucaia_20 = criarRota(fortaleza, caucaia, "20:00");
     
     /* Interface */
     int numRota;
@@ -48,10 +62,19 @@ int main() {
     printf("[3] Caucaia - 20:00\n");
 
     scanf("%d", &numRota);
-    switch (numRota) {
-        case 1:
-
-        break;
+    if (numRota == 1) {
+        int a;
+        char c;
+        Cidade* aux = obtemComeco(Rcaucaia_8);
+        printf("%s\n\n%s", obtemNome(aux), obtemDesc(aux));
+        printf("\n\nDigite 'A' para navegar à esquerda e 'D', à direita.\n\n");
+        scanf("%c", &c);
+        scanf("%d", &a);
+        printf("%d", a);
+        if (c == 'D') {
+            aux = obtemProx(aux);
+            printf("%s\n\n%s", obtemNome(aux), obtemDesc(aux));
+        }
     }
     return 0;
 }

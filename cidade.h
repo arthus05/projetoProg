@@ -23,3 +23,8 @@ Cidade* atribuiProx(Cidade* cidade, Cidade* prox);
 /* Atribui anterior a uma cidade */
 Cidade* atribuiAnt(Cidade* cidade, Cidade* ant);
 
+/* Retorna o nome da cidade */
+char* obtemNome(Cidade* cidade);
+
+/* Retorna a descrição da cidade */
+char* obtemDesc(Cidade* cidade);
