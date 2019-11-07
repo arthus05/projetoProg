@@ -24,8 +24,9 @@ int tamCidade() {
     return sizeof(Cidade);
 }
 
-Cidade copCidade(Cidade* cidade) {
-    return *cidade;
+Cidade* copCidade(Cidade* cidade) {
+    Cidade* cidadeCop = criaCidade(cidade->nome, cidade->descricao);
+    return cidadeCop;
 }
 
 Cidade* obtemProx(Cidade* cidade) {

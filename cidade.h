@@ -9,7 +9,7 @@ Cidade* criaCidade(char* nome, char* descricao);
 int tamCidade();
 
 /* Obtém cópia de uma cidade */
-Cidade copCidade(Cidade* cidade);
+Cidade* copCidade(Cidade* cidade);
 
 /* Retorna o próximo de uma cidade */
 Cidade* obtemProx(Cidade* cidade);
