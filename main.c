@@ -5,6 +5,8 @@
 #include "cidade.h"
 #include "rota.h"
 
+
+
 void nav(Rota* rota) {
     int a;
     char c;
@@ -35,6 +37,36 @@ void nav(Rota* rota) {
             break;
         }   
     }*/
+}
+/* Retorna a rota com o horário mais próximo, recebendo o vetor contendo todas as rotas, o destino, o horário fornecido pelo 
+usuário, e o número total de rotas. Levando em consideração que o número máximo de rotas para um destino seja 5 */
+
+Rota* buscaRota(Rota** vetRotas, Cidade* cidade, int h, int m, int num) {
+    //Aqui armazenamos as rotas com o destino desejado.
+    Rota* rotasDestino[5];
+    int j = 0;
+    for (int i=0; i < num; i++) {
+        if (obtemNome(obtemDestino(vetRotas[i])) == obtemNome(cidade)) {
+            rotasDestino[j] = vetRotas[i];
+            j++;
+        } else {
+            continue;
+        }
+    }
+    //Aqui encontramos o horário mais próximo
+    int tempMin[6];
+    int tempProx;
+    int k;
+    tempMin[0] = h*60 + m;
+    for (int i=0; i < j; i++) {
+        tempMin[i+1] = obtemHoraEmMin(rotasDestino[i]);
+    }
+    for (int i=0; i < j - 1; i++) {        
+        if (abs(tempMin[0] - tempMin[i]) > abs(tempMin[0] - tempMin[i + 1])) {
+            k = i;
+        }
+    }
+    return rotasDestino[k];
 }
 
 int main() {
@@ -86,14 +118,19 @@ int main() {
     /* Interface */
     char dest[10];
     int h, m;
-/*
+    int qtdRotas = 2;
+
     printf("Olá, seja bem vindo à rodoviária Afonceu Pirulin.\nEscolha o sua rota!\n");
     printf("Diga aí o destino: ");
     scanf("%s", dest);
     printf("Diga aí o horário(hh:mm): ");
     scanf("%d:%d", &h, &m);
-*/
-    int numRota;
+    if (strcmp(dest, "Sobral") == 0) {
+        Rota* rotaEscolhida = buscaRota(vetRotas, sobral, h, m, qtdRotas);
+        nav(rotaEscolhida);
+    }
+
+    /*int numRota;
 
 
     scanf("%d", &numRota);
@@ -104,5 +141,6 @@ int main() {
         nav(Rsobral_2);
     }
     return 0;
+    */
 }
 

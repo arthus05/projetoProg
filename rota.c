@@ -33,3 +33,12 @@ void preencheRota(Rota* rota, Cidade** preenchimento, int tam) {
 Cidade* obtemComeco(Rota* rota) {
     return rota->comeco;
 }
+
+int obtemHoraEmMin(Rota* rota) {
+    int horMin = 60*(rota->hora) + rota->min;
+    return horMin;
+}
+
+Cidade* obtemDestino(Rota* rota) {
+    return rota->destino;
+}

@@ -12,3 +12,9 @@ void preencheRota(Rota* rota, Cidade** preenchimento, int tam);
 
 /* Retorna o ponteiro para a cidade inicial da rota */
 Cidade* obtemComeco(Rota* rota);
+
+/* Retorna o ponteiro para o destino da rota */
+Cidade* obtemDestino(Rota* rota);
+
+/* Retorna o horário da rota, em minutos. */
+int obtemHoraEmMin(Rota* rota);
