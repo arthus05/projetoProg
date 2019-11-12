@@ -19,14 +19,18 @@ void nav(Rota* rota) {
         if (c == 'D') {
             if (obtemProx(aux) != NULL) {
                 aux = obtemProx(aux);
-                printf("%s\n\n%s\n", obtemNome(aux), obtemDesc(aux));
+                printf("\n%s\n\n%s\n", obtemNome(aux), obtemDesc(aux));
             } else {
                 continue;
             }
         }
         else if (c == 'A') {
-            aux = obtemAnt(aux);
-            printf("%s\n\n%s\n", obtemNome(aux), obtemDesc(aux));
+            if (obtemAnt(aux) != NULL){
+                aux = obtemAnt(aux);
+                printf("\n%s\n\n%s\n", obtemNome(aux), obtemDesc(aux));
+            } else {
+                continue;
+            }
         } else {
             break;
         }
@@ -72,6 +76,16 @@ Rota* buscaRota(Rota** vetRotas, Cidade* cidade, int h, int m, int num) {
         }
     }
     return rotasDestino[k];
+}
+
+void selecionaRota(Rota** vetRotas, Cidade* cidade, int h, int m, int qtdRotas) {
+    int t, hp, mp;
+    Rota* rotaEscolhida = buscaRota(vetRotas, cidade, h, m, qtdRotas);
+    t = obtemHoraEmMin(rotaEscolhida);
+    hp = floor(t/60);
+    mp = t - hp*60;
+    printf("Horário encontrado: %d:%d\n", hp, mp);
+    nav(rotaEscolhida);
 }
 
 void main() {
@@ -239,33 +253,30 @@ void main() {
     int qtdRotas = 15;
 
     printf("Olá, seja bem vindo à rodoviária Afonceu Pirulin.\nEscolha o sua rota!\n");
-    printf("Diga aí o destino(Ex.: Quixadá, Sobral): ");
+    printf("-Sobral\n-Beberibe\n-Quixadá\n-Guaramiranga\n-Aracati\n-Russas\n");
+    printf("Informe o destino(Ex.: Quixadá, Sobral): ");
     scanf("%s", dest);
-    printf("Diga aí o horário(hh:mm): ");
+    printf("Informe o horário de destino(hh:mm): ");
     scanf("%d:%d", &h, &m);
     if (strcmp(dest, "Sobral") == 0) {
-        Rota* rotaEscolhida = buscaRota(vetRotas, sobral, h, m, qtdRotas);
-        nav(rotaEscolhida);
+        selecionaRota(vetRotas, sobral, h, m, qtdRotas);
     }
     else if (strcmp(dest, "Beberibe") == 0) {
-        Rota* rotaEscolhida = buscaRota(vetRotas, beberibe, h, m, qtdRotas);
-        nav(rotaEscolhida);
+        selecionaRota(vetRotas, beberibe, h, m, qtdRotas);
     }
     else if (strcmp(dest, "Quixadá") == 0) {
-        Rota* rotaEscolhida = buscaRota(vetRotas, quixada, h, m, qtdRotas);
-        nav(rotaEscolhida);
+        selecionaRota(vetRotas, quixada, h, m, qtdRotas);
     }
     else if (strcmp(dest, "Guaramiranga") == 0) {
-        Rota* rotaEscolhida = buscaRota(vetRotas, guaramiranga, h, m, qtdRotas);
-        nav(rotaEscolhida);
+        selecionaRota(vetRotas, guaramiranga, h, m, qtdRotas);
     }
     else if (strcmp(dest, "Aracati") == 0) {
-        Rota* rotaEscolhida = buscaRota(vetRotas, aracati, h, m, qtdRotas);
-        nav(rotaEscolhida);
+        selecionaRota(vetRotas, aracati, h, m, qtdRotas);
     }
     else if (strcmp(dest, "Russas") == 0) {
-        Rota* rotaEscolhida = buscaRota(vetRotas, russas, h, m, qtdRotas);
-        nav(rotaEscolhida);
+        selecionaRota(vetRotas, russas, h, m, qtdRotas);
+    } else {
+        printf("Destino não disponível.");
     }
 }
 
