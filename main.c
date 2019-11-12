@@ -171,7 +171,7 @@ void main() {
     Cidade* camQuixada3[3];
     camQuixada3[0] = copCidade(maracanau);
     camQuixada3[1] = copCidade(caninde);
-    camQuixada3[3] = copCidade(choro);
+    camQuixada3[2] = copCidade(choro);
     preencheRota(Rquixada_3, camQuixada3, 3);
 
     /* Para Guaramiranga */
@@ -227,7 +227,7 @@ void main() {
 
     Rota* Rrussas_2 = criarRota(copCidade(fortaleza), copCidade(russas), 23, 0);
     vetRotas[14] = Rrussas_2;
-    Cidade* camRussas2[3];
+    Cidade* camRussas2[2];
     camRussas2[0] = copCidade(aquiraz);
     camRussas2[1] = copCidade(cascavel);
     preencheRota(Rrussas_2, camRussas2, 2);
@@ -247,23 +247,23 @@ void main() {
         Rota* rotaEscolhida = buscaRota(vetRotas, sobral, h, m, qtdRotas);
         nav(rotaEscolhida);
     }
-    else if (strcmp(dest, "Beberibe")) {
+    else if (strcmp(dest, "Beberibe") == 0) {
         Rota* rotaEscolhida = buscaRota(vetRotas, beberibe, h, m, qtdRotas);
         nav(rotaEscolhida);
     }
-    else if (strcmp(dest, "Quixadá")) {
+    else if (strcmp(dest, "Quixadá") == 0) {
         Rota* rotaEscolhida = buscaRota(vetRotas, quixada, h, m, qtdRotas);
         nav(rotaEscolhida);
     }
-    else if (strcmp(dest, "Guaramiranga")) {
+    else if (strcmp(dest, "Guaramiranga") == 0) {
         Rota* rotaEscolhida = buscaRota(vetRotas, guaramiranga, h, m, qtdRotas);
         nav(rotaEscolhida);
     }
-    else if (strcmp(dest, "Aracati")) {
+    else if (strcmp(dest, "Aracati") == 0) {
         Rota* rotaEscolhida = buscaRota(vetRotas, aracati, h, m, qtdRotas);
         nav(rotaEscolhida);
     }
-    else if (strcmp(dest, "Russas")) {
+    else if (strcmp(dest, "Russas") == 0) {
         Rota* rotaEscolhida = buscaRota(vetRotas, russas, h, m, qtdRotas);
         nav(rotaEscolhida);
     }
